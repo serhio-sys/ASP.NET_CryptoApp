@@ -1,0 +1,22 @@
+﻿@page "/"
+@model CryptoApp.Pages.HomePageModel;
+
+@{
+	ViewBag.Title = "Home";
+	Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Model.user != null)
+    {
+        <h1>Hello, @Model.user?.Username</h1>
+    }
+    else
+    {
+        <div class="_flex btn-group_my">
+            <a class="btn btn-outline-dark" href="@Url.Page("Login")">Sign In</a>
+            <a class="btn btn-dark" href="@Url.Page("Register")">Sign Up</a>
+        </div>
+    }
+}
+

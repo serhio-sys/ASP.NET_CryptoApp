@@ -1,0 +1,130 @@
+﻿@page "/allcrypto-coins/"
+@using CryptoApp.Models;
+@model CryptoApp.Pages.CryptoModel
+@{
+    ViewBag.Title = "Crypto Main Page";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+@section Styles{
+    <style>
+        ._flex{
+            flex-direction:column;
+        }
+    </style>
+}
+
+<h1>Coins</h1>
+<form method="post" style="display:flex;flex-direction:column;gap:0.5em;justify-content:center;align-content:center;">
+    @Html.AntiForgeryToken()
+    <p>
+        <label>Coin Name</label>
+        <input type="text" placeholder="Enter name" class="form-control" name="CoinName" />
+    </p>
+    <select class="form-select form-select-sm" name="SortSelect" aria-label="Small select">
+        <option value="0" selected="">Select sort by money</option>
+        <option value="2">From Biggest to Smallest</option>
+        <option value="1">From Smallest to Biggest</option>
+    </select>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="toUp" id="formCheckChecked" value="true">
+        <label class="form-check-label" for="formCheckChecked">By Up</label>
+    </div>
+    <button type="submit" class="btn btn-dark">Search</button>
+</form>
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col" style="text-align:center">Name</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Price</th>
+            <th scope="col">Market Cap</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Coins == null || Model.Coins.Count == 0)
+            {
+                <tr>
+                    <th>No coins here!</th>
+                </tr>
+            }
+            else
+            {
+                foreach (Coin coin in Model.Coins)
+                {
+                    <tr>
+                        <td>
+                            <img width="40" height="40" src="@coin.Image" />
+                            @coin.Name
+                        </td>
+                        <td>@coin.Symbol</td>
+                        <td>@coin.Price $ @{
+                                if (@coin.isFall)
+                                {
+                                    <span style="color:red">▼</span>
+                                }
+                                else
+                                {
+                                    <span style="color:green">▲</span>
+                                }
+                            }
+                        </td>
+                        <td>@coin.MarketCap</td>
+                        <td>
+                            @{
+                                if (Model.user != null)
+                                {
+                                    CoinUser? coinUser = Model.CoinUsers.FirstOrDefault(it => it.UserId==Model.Id && it.CoinId == coin.Id);
+                                    if (coinUser != null)
+                                    {
+                                    <a class="btn btn-danger" href="@Url.Page($"Follow")?pk=@coin.Id">Unfollow</a>
+                                    }
+                                    else
+                                    {
+                                    <a class="btn btn-success" href="@Url.Page($"Follow")?pk=@coin.Id">Follow</a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a class="btn btn-dark" href="@Url.Page("Login")">Sign In</a>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="@Url.Page("Crypto")?Cpage=@{if (Model.page-1<=0) {@Model.page} else {@(Model.page+1)}}" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+            </a>
+        </li>
+        @{
+            if (Model.Coins != null)
+            {
+                for (int i = 1; i <= Model.countOfPages / 50 + 1; i++)
+                {
+                    if (Model.page == i)
+                    {
+                        <li class="page-item active"><a class="page-link">@i</a></li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="@Url.Page("Crypto")?Cpage=@i">@i</a></li>
+                    }
+                }
+            }
+        }
+        <li class="page-item">
+            <a class="page-link" href="@Url.Page("Crypto")?Cpage=@{ if (Model.page+1<Model.countOfPages) {@Model.countOfPages} else {@(Model.page+1)}}" aria-label="Next">
+                <span aria-hidden="true">»</span>
+            </a>
+        </li>
+    </ul>
+</nav>

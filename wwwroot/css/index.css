@@ -1,0 +1,39 @@
+﻿body {
+    background-image: linear-gradient(to right,lightskyblue,orange,yellow);
+    background-repeat: no-repeat;
+    background-size: 400% 400%;
+    background-position: 0% 0%;
+    animation: anim 13s infinite;
+    min-height: 100vh;
+}
+
+@keyframes anim {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+._flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    min-height: calc(100vh - 10vh);
+}
+
+.btn-group_my {
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+    .btn-group_my a {
+        font-size: 2em;
+    }

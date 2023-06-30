@@ -1,0 +1,33 @@
+﻿@page "/sign-up/"
+@model CryptoApp.Pages.RegisterModel
+
+@{
+    ViewBag.Title = "Sign Up";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+<form class="form" method="post">
+    <h1 style="text-align:center;">Registration Form</h1>
+    @Html.AntiForgeryToken()
+    <ul id="msg" style="list-style:none;">
+        @{
+            foreach (string str in Model.errors)
+            {
+                <li>@str</li>
+            }
+        }
+    </ul>
+    <p>
+        <input name="Username" id="Username" class="form-control" placeholder="Enter username" required />
+    </p>
+    <p>
+        <input name="Email" id="Email" class="form-control" placeholder="Enter email" required />
+    </p>
+    <p>
+        <input name="Password" id="Password" class="form-control" placeholder="Enter password" required />
+    </p>
+    <p>
+        <input name="Password1" id="Password1" class="form-control" placeholder="Enter password again" required />
+    </p>
+    <button type="submit" id="sendBtn" class="btn btn-outline-dark">Register</button>
+</form>
+

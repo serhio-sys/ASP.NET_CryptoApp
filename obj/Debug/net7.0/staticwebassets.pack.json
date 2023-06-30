@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "F:\\C# projects\\CryptoApp\\CryptoApp\\wwwroot\\css\\index.css",
+      "PackagePath": "staticwebassets\\css\\index.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CryptoApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.CryptoApp.props",
+      "PackagePath": "build\\CryptoApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.CryptoApp.props",
+      "PackagePath": "buildMultiTargeting\\CryptoApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.CryptoApp.props",
+      "PackagePath": "buildTransitive\\CryptoApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

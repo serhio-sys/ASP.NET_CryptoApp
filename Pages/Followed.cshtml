@@ -1,0 +1,68 @@
+﻿@page "/user/followed/"
+@using CryptoApp.Models;
+@using CryptoApp.Pages;
+@model CryptoApp.Pages.FollowedModel;
+@{
+    ViewBag.Title = "Crypto Main Page";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+
+@section Styles{
+    <style>
+        ._flex {
+            flex-direction: column;
+        }
+    </style>
+}
+
+<h1>Followed Coins</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" style="text-align:center">Name</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Price</th>
+            <th scope="col">Market Cap</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.Coins == null || Model.Coins.Count == 0)
+            {
+                <tr>
+                <th>No coins here!</th>
+                </tr>
+            }
+            else
+            {
+                foreach (Coin coin in Model.Coins)
+                {
+                    <tr>
+                        <td>
+                            <img width="40" height="40" src="@coin.Image" />
+                            @coin.Name
+                        </td>
+                        <td>@coin.Symbol</td>
+                        <td>@coin.Price $ @{
+                                if (@coin.isFall)
+                                {
+                                    <span style="color:red">▼</span>
+                                }
+                                else
+                                {
+                                    <span style="color:green">▲</span>
+                                }
+                            }
+                        </td>
+                        <td>@coin.MarketCap</td>
+                        <td>
+                            <a class="btn btn-danger" href="@Url.Page($"Follow")?pk=@coin.Id&pg=2">Unfollow</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

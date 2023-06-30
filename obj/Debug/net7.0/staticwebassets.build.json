@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "spVK3Qk8JVPlpnwFtExrzTyri6p7o3fyfomUVU/r+BE=",
+  "Source": "CryptoApp",
+  "BasePath": "_content/CryptoApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "CryptoApp\\wwwroot",
+      "Source": "CryptoApp",
+      "ContentRoot": "F:\\C# projects\\CryptoApp\\CryptoApp\\wwwroot\\",
+      "BasePath": "_content/CryptoApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "F:\\C# projects\\CryptoApp\\CryptoApp\\wwwroot\\css\\index.css",
+      "SourceId": "CryptoApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\C# projects\\CryptoApp\\CryptoApp\\wwwroot\\",
+      "BasePath": "_content/CryptoApp",
+      "RelativePath": "css/index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\index.css"
+    }
+  ]
+}

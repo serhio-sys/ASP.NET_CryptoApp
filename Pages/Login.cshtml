@@ -1,0 +1,27 @@
+﻿@page "/sign-in/"
+@model CryptoApp.Pages.LoginModel;
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}       
+<form method="post">
+    <h1 style="text-align:center;">Login Form</h1>
+    <ul>
+        @{
+            foreach (string err in Model.errors)
+            {
+                <li>@err</li>
+            }
+        }
+    </ul>
+    @Html.AntiForgeryToken()
+    <p>
+        <input name="Username" class="form-control" placeholder="Enter username" />
+    </p>
+    <p>
+        <input name="Password" class="form-control" placeholder="Enter password" />
+    </p>
+    <button type="submit" class="btn btn-outline-dark">Login</button>
+</form>
+ 
